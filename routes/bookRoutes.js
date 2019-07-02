@@ -31,9 +31,4 @@ module.exports = app => {
       .then(_ => res.sendStatus(200))
       .catch(e => console.log(e))
   })
-  // Send every other request to the React app
-  // Define any API routes before this runs
-  app.get('*', (req, res) => {
-    res.sendFile(join(__dirname, './client/build/index.html'))
-  })
 }
