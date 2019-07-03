@@ -1,9 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 class App extends React.Component {
-  componentDidMount() {
-
-    // when talking to server, make sure to have a url like this: 
+  componentDidMount () {
+    // when talking to server, make sure to have a url like this:
     // http://localhost:4000
 
     return axios.get('http://localhost:4000/search')
@@ -12,7 +11,7 @@ class App extends React.Component {
       })
   }
 
-  render() {
+  render () {
     return (
       <h1>Book Search</h1>
     )

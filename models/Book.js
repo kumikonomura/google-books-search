@@ -1,9 +1,7 @@
 // Require Mongoose
 const mongoose = require('mongoose')
-// Define a schema
-const Schema = mongoose.Schema
 
-const BookSchema = new Schema({
+const Book = new mongoose.Schema({
   title: String,
   author: String,
   description: String,
@@ -11,8 +9,7 @@ const BookSchema = new Schema({
   link: String
 })
 // Compile model from schema
-const Book = mongoose.model('Book', BookSchema)
-module.exports = Book
+module.exports = mongoose.model('Book', Book)
 
 // REFERENCES
 // https://mongoosejs.com/docs/guide.html
