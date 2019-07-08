@@ -1,9 +1,11 @@
 import React from 'react'
+import Book from '../../utils/Book.js'
 
-const Save = _ => {
-  return (
-    <h1>This is the Save Page</h1>
-  )
+class Save extends React.Component {
+  state = {
+    savedBooks: []
+  }
+  componentDidMount = _ => {
+    
+  }
 }
-
-export default Save
