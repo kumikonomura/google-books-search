@@ -4,18 +4,38 @@ import axios from 'axios'
 import SearchBox from './components/SearchBox'
 class App extends React.Component {
   state = {
-    searchField: '',
-    title: ''
+    searchTerm: '',
+    title: '',
+    author: '',
+    description: '',
+    image: '',
+    link: '',
+    book: {
+      title: '',
+      author: '',
+      description: '',
+      image: '',
+      link: ''
+    }
   }
   componentDidMount () {
+    let searchTerm = this.state.searchTerm
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAGDbzsUMeCa0dq4ANvOuWeZACpiZkSbpY`)
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
     // when talking to server, make sure to have a url like this:
     // http://localhost:4000
 
-    return axios.get('http://localhost:4000/search')
-      .then(data => {
-        console.log('here is some data for the api: ', data)
-      })
-  }
+  //   return axios.get('http://localhost:4000/search')
+  //     .then(data => {
+  //       console.log('here is some data for the api: ', data)
+  //     })
+  // }
 
   render () {
     return (
