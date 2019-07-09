@@ -18,16 +18,33 @@ class App extends React.Component {
       link: ''
     }
   }
-  componentDidMount () {
-    let searchTerm = this.state.searchTerm
+
+  handleSearchBook = searchTerm => {
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAGDbzsUMeCa0dq4ANvOuWeZACpiZkSbpY`)
     .then(response => {
-      console.log(response.data)
+      const {
+        title,
+        authors,
+        imageLinks,
+        infoLink
+      } = response.data.items[0].volumeInfo
+      this.setState({ title, author: authors[0], image: imageLinks, link: infoLink })
     })
     .catch(error => {
       console.log(error)
     })
+
   }
+
+  handleSearchButton = _ => {
+    console.log('click working')
+    // this.handleSearchBook('')
+  }
+
+  // componentDidMount () {
+  //   this.searchTerm = 'Harry Potter'
+  //   this.handleSearchBook('Harry Potter and the Chamber of Secrets')
+  // }
     // when talking to server, make sure to have a url like this:
     // http://localhost:4000
 
@@ -43,7 +60,7 @@ class App extends React.Component {
       <h1>Google Books Search</h1>
       <h4>Search and save your favorite books</h4>
       <SearchBox 
-      title={this.state.title}
+      clickHandler={this.handleSearchButton}
       />
       </>
     )
