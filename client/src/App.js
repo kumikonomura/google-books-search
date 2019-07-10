@@ -58,7 +58,7 @@ class App extends React.Component {
   render () {
     return (
       <>
-      <NavBar />
+      <NavBar/>
       <SearchBox 
       clickHandler={this.handleSearchButton}
       />

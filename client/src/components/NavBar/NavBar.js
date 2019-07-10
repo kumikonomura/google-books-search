@@ -12,8 +12,8 @@ const NavBar = _ => {
           <Typography variant='h4'>
             Google Books
           </Typography>
-          <Button variant='h6' color='inherit'>Search</Button>
-          <Button variant='h6' color='inherit'>Saved</Button>
+          <Button style={{ variant: 'h6' }} color='inherit'>Search</Button>
+          <Button style={{ variant: 'h6' }} color='inherit'>Saved</Button>
         </Toolbar>
       </AppBar>
     </div>
