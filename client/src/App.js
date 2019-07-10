@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import axios from 'axios'
 import SearchBox from './components/SearchBox'
+import NavBar from './components/NavBar'
 class App extends React.Component {
   state = {
     searchTerm: '',
@@ -18,7 +19,7 @@ class App extends React.Component {
       link: ''
     }
   }
-
+// This function will search for the book using the Google Books API
   handleSearchBook = searchTerm => {
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAGDbzsUMeCa0dq4ANvOuWeZACpiZkSbpY`)
     .then(response => {
@@ -38,7 +39,7 @@ class App extends React.Component {
 
   handleSearchButton = _ => {
     console.log('click working')
-    // this.handleSearchBook('')
+    this.handleSearchBook('')
   }
 
   // componentDidMount () {
@@ -57,8 +58,7 @@ class App extends React.Component {
   render () {
     return (
       <>
-      <h1>Google Books Search</h1>
-      <h4>Search and save your favorite books</h4>
+      <NavBar />
       <SearchBox 
       clickHandler={this.handleSearchButton}
       />
