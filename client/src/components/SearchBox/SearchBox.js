@@ -28,7 +28,10 @@ const SearchBox = props => {
         <Button
           variant='contained'
           color='primary'
-          onClick={() => props.clickHandler(searchTerm)}
+          onClick={() => {
+            console.log(searchTerm)
+            props.clickHandler(searchTerm)
+          }}
           className='searchButton'>
           Search
         </Button>
