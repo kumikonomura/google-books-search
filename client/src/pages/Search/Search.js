@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import SearchBox from '../../components/SearchBox'
+import Card from '../../components/Card'
 
 class Search extends React.Component {
   state = {
@@ -27,9 +28,11 @@ class Search extends React.Component {
           title,
           authors,
           imageLinks,
+          description,
           infoLink
         } = response.data.items[0].volumeInfo
-        this.setState({ title, author: authors[0], image: imageLinks.smallThumbnail, link: infoLink })
+        console.log(response)
+        this.setState({ title, author: authors[0], image: imageLinks.smallThumbnail, description, link: infoLink })
       })
       .catch(error => {
         console.log(error)
@@ -43,10 +46,18 @@ class Search extends React.Component {
         <SearchBox
           clickHandler={this.handleSearchBook}
         />
-        <h1>{this.state.title}</h1>
+        <Card 
+        title={this.state.title}
+        author={this.state.author}
+        image={this.state.image}
+        description={this.state.description}
+        link={this.state.link}
+        />
+        {/* <h1>{this.state.title}</h1>
         <h1>{this.state.author}</h1>
         <img src={this.state.image}></img>
-        <h1>{this.state.link}</h1>
+        <h5>{this.state.description}</h5>
+        <h3>{this.state.link}</h3> */}
       </>
     )
   }

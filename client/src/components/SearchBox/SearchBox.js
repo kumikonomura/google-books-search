@@ -11,7 +11,7 @@ const SearchBox = props => {
     <>
       <div style={{ textAlign: 'center', marginTop: '80px' }}>
         <h1>Google Books Search</h1>
-        <h4>Search and save your favorite books</h4>
+        <h4>Search and Save your favorite books</h4>
       </div>
       <div style={{ textAlign: 'center' }}>
         <TextField
