@@ -7,3 +7,20 @@
 .image {
   padding-left: 10px;
 }
+.cardDiv {
+  background-color: #FFFF33;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  padding: 20px 20px 20px 20px;
+}
+.subContent {
+  padding-top: 10px;
+}
+.buttonContent {
+  text-align: right;
+}
+.view {
+  margin-right: 10px;
+}
