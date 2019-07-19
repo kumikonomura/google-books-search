@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import './SearchBox.css'
 
 const SearchBox = props => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -9,11 +10,11 @@ const SearchBox = props => {
 
   return (
     <>
-      <div style={{ textAlign: 'center', marginTop: '80px' }}>
+      <div className='headers' >
         <h1>Google Books Search</h1>
         <h4>Search and Save your favorite books</h4>
       </div>
-      <div style={{ textAlign: 'center' }}>
+      <div className='inputBox' >
         <TextField
           id='outlined-password-input'
           type='text'
@@ -24,7 +25,7 @@ const SearchBox = props => {
           variant='outlined'
         />
       </div>
-      <div style={{ textAlign: 'center' }}>
+      <div className='search' >
         <Button
           variant='contained'
           color='primary'
