@@ -36,6 +36,16 @@ const SearchBox = props => {
           className='searchButton'>
           Search
         </Button>
+        <Button
+          variant='contained'
+          color='primary'
+          onClick={() => {
+            setSearchTerm('')
+            props.handleSearchClear()
+          }}
+          className='searchButton'>
+          Clear
+        </Button>
       </div>
     </>
   )

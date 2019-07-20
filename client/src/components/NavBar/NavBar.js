@@ -4,7 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 
-const NavBar = _ => {
+const NavBar = props => {
   return (
     <div>
       <AppBar position='static'>
@@ -12,7 +12,12 @@ const NavBar = _ => {
           <Typography variant='h4'>
             Google Books
           </Typography>
-          <Button style={{ variant: 'h6' }} color='inherit'>Search</Button>
+          <Button
+            style={{ variant: 'h6' }}
+            color='inherit'
+            onClick={props.toggleView} >
+            Search
+          </Button>
           <Button style={{ variant: 'h6' }} color='inherit'>Saved</Button>
         </Toolbar>
       </AppBar>

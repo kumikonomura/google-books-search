@@ -3,18 +3,18 @@ import './Card.css'
 
 const CardInfo = props => {
   return (
-    <div className='cardDiv'>
+                  <div className='cardDiv'>
       <form>
-        <div className='mainContent'>
+          <div className='mainContent'>
           <h2 className='title'>{props.title}</h2>
-          <p className='author'>{props.author}</p>
+                        <p className='author'>{props.author}</p>
           <img className='image' src={props.image} />
         </div>
         <div className='subContent'>
           <p className='description'>{props.description}</p>
         </div>
-        <div className='buttonContent'>
-          <button className='view' href={props.link}>View</button>
+                               <div className='buttonContent'>
+          <a className='view' href={props.link} />
           <button className='save'>Save</button>
         </div>
       </form>
