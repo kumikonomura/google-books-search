@@ -1,6 +1,6 @@
-import React from 'react'
-import SearchBox from '../../components/Search/SearchBox'
-import Card from '../../components/Search/Card'
+import React from "react";
+import SearchBox from "../../components/Search/SearchBox";
+import Card from "../../components/Search/Card";
 
 const Search = props => {
   return (
@@ -9,7 +9,7 @@ const Search = props => {
         clickHandler={props.clickHandler}
         handleSearchClear={props.handleSearchClear}
       />
-      {props.title &&
+      {props.title && (
         <Card
           title={props.title}
           author={props.author}
@@ -17,9 +17,9 @@ const Search = props => {
           description={props.description}
           link={props.link}
         />
-      }
+      )}
     </>
-  )
-}
+  );
+};
 
-export default Search
+export default Search;

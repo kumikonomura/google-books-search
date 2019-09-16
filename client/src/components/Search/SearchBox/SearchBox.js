@@ -43,7 +43,7 @@ const SearchBox = props => {
             setSearchTerm('')
             props.handleSearchClear()
           }}
-          className='searchButton'>
+          className='clearButton'>
           Clear
         </Button>
       </div>
