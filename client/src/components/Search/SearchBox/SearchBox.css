@@ -8,3 +8,9 @@
 .search {
   text-align: center;
 }
+#searchingButton {
+  margin: 8px;
+}
+#clearingButton {
+  margin: 8px;
+}

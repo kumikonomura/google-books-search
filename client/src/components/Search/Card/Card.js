@@ -14,9 +14,11 @@ const CardInfo = props => {
           <p className="description">{props.description}</p>
         </div>
         <div className="buttonContent">
-          <button className="save">Save</button>
+          <button className="save" onClick={props.handleSaveBook}>
+            Save
+          </button>
           <button className="view">
-            <a className='link' target="_blank" href={props.link}>
+            <a className="link" target="_blank" href={props.link}>
               View
             </a>
           </button>

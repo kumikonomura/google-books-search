@@ -1,13 +1,12 @@
 import axios from "axios";
 
-const Book = {
-  search: _ => axios.get("/search"),
-  // GET all saved books from the db
-  getBook: _ => axios.get("/api/books"),
+const Books = {
+  // GET saved books from the db
+  getAll: _ => axios.get("/books"),
   // POST a new book to db
-  postBook: _ => axios.post("/api/books"),
+  postOne: book => axios.post("/books", book),
   // DELETE a book from db
-  deleteBook: _id => axios.delete(`/api/books/${_id}`)
+  deleteOne: id => axios.delete(`/books/${id}`)
 };
 
-export default Book;
+export default Books;
