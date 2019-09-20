@@ -9,46 +9,54 @@ class Search extends React.Component {
   state = {
     isSearching: true,
     searchTerm: "",
-    booksArr: [],
-    book: {
-      title: "",
-      authors: "",
-      imageLinks: "",
-      description: "",
-      infoLink: ""
-    }
+    title: "",
+    author: "",
+    image: "",
+    description: "",
+    link: ""
+    // book: {
+    //   title: "",
+    //   author: "",
+    //   image: "",
+    //   description: "",
+    //   link: ""
+    // }
   };
 
   // This function will search for the book using the Google Books API
   handleSearchBook = searchTerm => {
     console.log("search term fam: ", searchTerm);
-    let booksArr = this.state.booksArr
     axios
       .get(
         `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAGDbzsUMeCa0dq4ANvOuWeZACpiZkSbpY`
       )
-      .then(({ data }) => {
-        console.log(data);
-        data.items.forEach(({ volumeInfo }) => {
-          this.setState({
-            book: {
-              title: volumeInfo.title,
-              authors: volumeInfo.authors,
-              imageLinks: volumeInfo.imageLinks,
-              description: volumeInfo.description,
-              infoLink: volumeInfo.infoLink,
-            }
-          })
-          booksArr.push(this.state.book)
-          console.log(booksArr)
-          this.setState({ booksArr })
-        })
+      .then(response => {
+        console.log(response);
+        const {
+          title,
+          authors,
+          imageLinks,
+          description,
+          infoLink
+        } = response.data.items[0].volumeInfo;
+        console.log(response);
+        this.setState({
+          title,
+          author: authors,
+          image: imageLinks.smallThumbnail,
+          description,
+          link: infoLink
+          // title,
+          // author: authors[0],
+          // image: imageLinks.smallThumbnail,
+          // description,
+          // link: infoLink
+        });
       })
       .catch(error => {
         console.log(error);
       });
   };
-
   // function to save book to database
   handleSaveBook = event => {
     event.preventDefault();
