@@ -9,70 +9,46 @@ class Search extends React.Component {
   state = {
     isSearching: true,
     searchTerm: "",
-    books: []
-    // title: "",
-    // author: "",
-    // description: "",
-    // image: "",
-    // link: "",
-    // savedTitle: "",
-    // savedAuthor: "",
-    // savedDescription: "",
-    // savedImage: "",
-    // savedLink: ""
+    booksArr: [],
+    book: {
+      title: "",
+      authors: "",
+      imageLinks: "",
+      description: "",
+      infoLink: ""
+    }
   };
 
-  handleSearchBook = searchTerm => {
-    console.log('search term fam', searchTerm)
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAGDbzsUMeCa0dq4ANvOuWeZACpiZkSbpY`
-    )
-    .then(({data: {items}}) => {
-      console.log(items)
-      let books = []
-      items.forEach((item) => {
-        let bookResult = {
-          title: item.volumeInfo.title,
-          authors: item.volumeInfo.authors,
-          image: item.volumeInfo.imageLinks,
-          description: item.volumeInfo.description,
-          link: item.volumeInfo.infoLink,
-        }
-        books.push(bookResult)
-      })
-      this.setState({ books })
-    })
-    .catch(error => console.log(error))
-  }
-
   // This function will search for the book using the Google Books API
-  // handleSearchBook = searchTerm => {
-  //   console.log("search term fam: ", searchTerm);
-  //   axios
-  //     .get(
-  //       `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAGDbzsUMeCa0dq4ANvOuWeZACpiZkSbpY`
-  //     )
-  //     .then(response => {
-  //       console.log(response);
-  //       const {
-  //         title,
-  //         authors,
-  //         imageLinks,
-  //         description,
-  //         infoLink
-  //       } = response.data.items[0].volumeInfo;
-  //       console.log(response);
-  //       this.setState({
-  //         title,
-  //         author: authors[0],
-  //         image: imageLinks.smallThumbnail,
-  //         description,
-  //         link: infoLink
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // };
+  handleSearchBook = searchTerm => {
+    console.log("search term fam: ", searchTerm);
+    let booksArr = this.state.booksArr
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAGDbzsUMeCa0dq4ANvOuWeZACpiZkSbpY`
+      )
+      .then(({ data }) => {
+        console.log(data);
+        data.items.forEach(({ volumeInfo }) => {
+          this.setState({
+            book: {
+              title: volumeInfo.title,
+              authors: volumeInfo.authors,
+              imageLinks: volumeInfo.imageLinks,
+              description: volumeInfo.description,
+              infoLink: volumeInfo.infoLink,
+            }
+          })
+          booksArr.push(this.state.book)
+          console.log(booksArr)
+          this.setState({ booksArr })
+        })
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
+
   // function to save book to database
   handleSaveBook = event => {
     event.preventDefault();
@@ -84,7 +60,7 @@ class Search extends React.Component {
     let savedDescription = description;
     let savedLink = link;
     console.log("saved function working");
-    Books.postOne(savedTitle)
+    Books.postOne(savedTitle);
   };
 
   // this function will clear the search box
