@@ -3,24 +3,23 @@ import SearchBox from "../../components/Search/SearchBox";
 import Card from "../../components/Search/Card";
 import axios from "axios";
 import Book from "../../utils/Book";
-import Books from "../../utils/Book";
 
 class Search extends React.Component {
   state = {
     isSearching: true,
     searchTerm: "",
-    title: "",
-    author: "",
-    image: "",
-    description: "",
-    link: ""
-    // book: {
-    //   title: "",
-    //   author: "",
-    //   image: "",
-    //   description: "",
-    //   link: ""
-    // }
+    books: []
+    // title: "",
+    // author: "",
+    // image: "",
+    // description: "",
+    // link: ""
+  };
+
+  handleInputChange = event => {
+    this.setState({
+      searchTerm: event.target.value
+    });
   };
 
   // This function will search for the book using the Google Books API
@@ -30,47 +29,31 @@ class Search extends React.Component {
       .get(
         `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAGDbzsUMeCa0dq4ANvOuWeZACpiZkSbpY`
       )
-      .then(response => {
-        console.log(response);
-        const {
-          title,
-          authors,
-          imageLinks,
-          description,
-          infoLink
-        } = response.data.items[0].volumeInfo;
-        console.log(response);
-        this.setState({
-          title,
-          author: authors,
-          image: imageLinks.smallThumbnail,
-          description,
-          link: infoLink
-          // title,
-          // author: authors[0],
-          // image: imageLinks.smallThumbnail,
-          // description,
-          // link: infoLink
+      .then(({ data: { items } }) => {
+        console.log(items);
+        let books = this.state.books;
+        items.forEach(item => {
+          let bookResults = {
+            title: item.volumeInfo.title,
+            authors: item.volumeInfo.authors,
+            image: item.volumeInfo.imageLinks.smallThumbnail,
+            description: item.volumeInfo.description,
+            link: item.volumeInfo.infoLink,
+            id: items.indexOf(item)
+          };
+          books.push(bookResults);
         });
-      })
-      .catch(error => {
-        console.log(error);
+        console.log(books);
+        this.setState({
+          books
+        });
       });
   };
+
   // function to save book to database
   handleSaveBook = event => {
-    event.preventDefault();
-    console.log(event.target);
-    const { title, author, image, description, link } = this.state;
-    let savedTitle = title;
-    let savedAuthor = author;
-    let savedImage = image;
-    let savedDescription = description;
-    let savedLink = link;
-    console.log("saved function working");
-    Books.postOne(savedTitle);
+    Book.postOneBook();
   };
-
   // this function will clear the search box
   handleSearchClear = _ => {
     this.setState({
@@ -96,44 +79,11 @@ class Search extends React.Component {
           handleSearchClear={this.handleSearchClear}
           handleInputChange={this.handleInputChange}
         />
-        {this.state.title && (
-          <Card
-            title={this.state.title}
-            author={this.state.author}
-            image={this.state.image}
-            description={this.state.description}
-            link={this.state.link}
-            handleSaveBook={this.handleSaveBook}
-          />
-        )}
+        {/* {this.state.title && ( */}
+          <Card books={this.state.books} handleSaveBook={this.handleSaveBook} />
+        {/* )} */}
       </>
     );
   }
 }
 export default Search;
-
-// import React from "react";
-// import SearchBox from "../../components/Search/SearchBox";
-// import Card from "../../components/Search/Card";
-
-// const Search = props => {
-//   return (
-//     <>
-//       <SearchBox
-//         clickHandler={props.clickHandler}
-//         handleSearchClear={props.handleSearchClear}
-//       />
-//       {props.title && (
-//         <Card
-//           title={props.title}
-//           author={props.author}
-//           image={props.image}
-//           description={props.description}
-//           link={props.link}
-//         />
-//       )}
-//     </>
-//   );
-// };
-
-// export default Search;

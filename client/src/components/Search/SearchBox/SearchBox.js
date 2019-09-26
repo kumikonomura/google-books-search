@@ -11,7 +11,7 @@ const SearchBox = props => {
   return (
     <>
       <div className="headers">
-        <h1>Google Books Search</h1>
+        <h1 id="main_title">Google Books Search</h1>
         <h4>Search and Save your favorite books</h4>
       </div>
       <div className="inputBox">
@@ -27,7 +27,7 @@ const SearchBox = props => {
       </div>
       <div className="search">
         <Button
-        id='searchingButton'
+          id="searchingButton"
           variant="contained"
           color="primary"
           onClick={() => {
@@ -39,7 +39,7 @@ const SearchBox = props => {
           Search
         </Button>
         <Button
-        id='clearingButton'
+          id="clearingButton"
           variant="contained"
           color="primary"
           onClick={() => {

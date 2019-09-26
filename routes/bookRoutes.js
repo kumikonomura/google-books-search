@@ -1,25 +1,24 @@
-const { Books } = require("../models/Book.js");
+const { Book } = require("../models/Book.js");
 
 module.exports = app => {
   // GET all saved books from db
   app.get("/books", (req, res) => {
-    Books.find({}, (e, books) => {
-      if (e) throw e;
-      res.json(books);
-    });
+    Book.find({})
+      .then(books => res.json(books))
+      .catch(e => console.log(e));
   });
+  
   // POST a book to the db
   app.post("/books", (req, res) => {
-    Book.create(req.body, e => {
-      if (e) throw e;
-      res.sendStatus(200);
-    });
+    Book.create(req.body)
+      .then(res.sendStatus(200))
+      .catch(e => console.log(e));
   });
+
   // DELETE a book from the db
-  app.delete("/books/:id", (req, res) => {
-    Book.findByIdAndDelete(req.params.id, e => {
-      if (e) throw e;
-      res.sendStatus(200);
-    });
+  app.delete("/books/:_id", (req, res) => {
+    Book.findByAndDelete(req.params._id)
+      .then(_ => res.sendStatus(200))
+      .catch(e => console.log(e));
   });
 };

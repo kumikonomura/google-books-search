@@ -1,10 +1,10 @@
 module.exports = (Schema, model) => {
-  const Books = new Schema({
+  const Book = new Schema({
     title: String,
-    author: Array,
+    authors: Array,
     description: String,
     image: String,
     link: String
   });
-  return model("Books", Books);
+  return model("Book", Book);
 };

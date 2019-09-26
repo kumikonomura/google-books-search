@@ -27,3 +27,27 @@
 .link {
   color: black;
 }
+#card_style {
+  background-color: orange;
+  padding: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 50px;
+}
+#author {
+  font-style: italic;
+}
+.save_button {
+  width: 60px;
+  font-size: 15px;
+  height: 30px;
+  margin-right: 3px;
+}
+#view_button {
+  width: 60px;
+  font-size: 15px;
+  height: 30px;
+}
+#book_description {
+  margin-bottom: 5px;
+}
