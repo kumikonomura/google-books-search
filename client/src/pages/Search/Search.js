@@ -54,12 +54,7 @@ class Search extends React.Component {
   // this function will clear the search box
   handleSearchClear = _ => {
     this.setState({
-      searchTerm: "",
-      title: "",
-      author: "",
-      description: "",
-      image: "",
-      link: ""
+      searchTerm: ""
     });
   };
 
@@ -68,7 +63,7 @@ class Search extends React.Component {
       isSearching: !this.state.isSearching
     });
   };
-  
+
   render() {
     return (
       <>

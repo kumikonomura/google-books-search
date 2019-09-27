@@ -3,7 +3,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 const NavBar = props => {
@@ -17,7 +16,9 @@ const NavBar = props => {
           <Button href="/" id="searchButton" onClick={props.toggleView}>
             New Search
           </Button>
-          <Button id="savedButton">Saved</Button>
+          <Button href="/saved" id="savedButton">
+            Saved
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
