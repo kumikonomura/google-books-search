@@ -6,10 +6,9 @@
 }
 #searchButton {
   font-variant: h6;
+  color: white;
 }
 #savedButton {
   font-variant: h6;
-}
-#linkButton {
   color: white;
 }

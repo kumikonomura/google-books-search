@@ -48,7 +48,7 @@ class Search extends React.Component {
   // function to save book to database
   handleSaveBook = event => {
     console.log(event.target);
-    console.log('button working')
+    console.log("button working");
     Book.saveBook(this.state.books[event.target.id]);
   };
   // this function will clear the search box
@@ -68,6 +68,7 @@ class Search extends React.Component {
       isSearching: !this.state.isSearching
     });
   };
+  
   render() {
     return (
       <>

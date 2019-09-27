@@ -9,19 +9,15 @@ import "./NavBar.css";
 const NavBar = props => {
   return (
     <div>
-      <AppBar id='navbar' position="static">
+      <AppBar id="navbar" position="static">
         <Toolbar>
-          <Typography id='google_header' variant="h4">Google Books</Typography>
-          <Button id="searchButton" onClick={props.toggleView}>
-            <Link id="linkButton" to="/">
-              New Search
-            </Link>
+          <Typography id="google_header" variant="h4">
+            Google Books
+          </Typography>
+          <Button href="/" id="searchButton" onClick={props.toggleView}>
+            New Search
           </Button>
-          <Button id="savedButton">
-            <Link id="linkButton" to="/saved">
-              Saved
-            </Link>
-          </Button>
+          <Button id="savedButton">Saved</Button>
         </Toolbar>
       </AppBar>
     </div>
