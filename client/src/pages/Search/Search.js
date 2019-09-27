@@ -9,11 +9,6 @@ class Search extends React.Component {
     isSearching: true,
     searchTerm: "",
     books: []
-    // title: "",
-    // author: "",
-    // image: "",
-    // description: "",
-    // link: ""
   };
 
   handleInputChange = event => {
@@ -52,7 +47,9 @@ class Search extends React.Component {
 
   // function to save book to database
   handleSaveBook = event => {
-    Book.postOneBook();
+    console.log(event.target);
+    console.log('button working')
+    Book.saveBook(this.state.books[event.target.id]);
   };
   // this function will clear the search box
   handleSearchClear = _ => {
@@ -79,9 +76,7 @@ class Search extends React.Component {
           handleSearchClear={this.handleSearchClear}
           handleInputChange={this.handleInputChange}
         />
-        {/* {this.state.title && ( */}
-          <Card books={this.state.books} handleSaveBook={this.handleSaveBook} />
-        {/* )} */}
+        <Card books={this.state.books} handleSaveBook={this.handleSaveBook} />
       </>
     );
   }

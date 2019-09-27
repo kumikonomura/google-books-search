@@ -12,8 +12,7 @@ app.use(express.static(join(__dirname, "client", "build")));
 
 routes(app);
 
-let MONGODB_URI =
-  process.env.MONGODB_URI || "mongodb://localhost:27017/googlebooks_db";
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/googlebooks";
 
 require("mongoose")
   .connect(MONGODB_URI, {

@@ -16,8 +16,8 @@ module.exports = app => {
   });
 
   // DELETE a book from the db
-  app.delete("/books/:_id", (req, res) => {
-    Book.findByAndDelete(req.params._id)
+  app.delete("/books/:id", (req, res) => {
+    Book.findByAndDelete(req.params.id)
       .then(_ => res.sendStatus(200))
       .catch(e => console.log(e));
   });
